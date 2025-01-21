@@ -11,28 +11,43 @@
       </div>
     </div>
 
-    <!-- Projects Grid -->
-    <div class="project-grid">
-      <div v-for="(project, index) in projects" 
-           :key="index" 
-           class="project-card"
-           @mouseenter="project.isHovered = true"
-           @mouseleave="project.isHovered = false">
-        <div class="project-content">
-          <img :src="project.image" :alt="project.title">
-          <div class="project-overlay" :class="{ 'show': project.isHovered }">
-            <h3>{{ project.title }}</h3>
-            <p>{{ project.description }}</p>
-            <div class="tech-stack">
-              <span v-for="tech in project.technologies" 
-                    :key="tech" 
-                    class="tech-tag">
-                {{ tech }}
-              </span>
-            </div>
-            <div class="project-links">
-              <a :href="project.liveLink" target="_blank" class="btn">View</a>
-              <a :href="project.githubLink" target="_blank" class="btn">Code</a>
+    <!-- Introduction Section -->
+    <div class="section">
+      <h2 class="section-title">Introduction</h2>
+      <p class="section-content">This is where you can introduce yourself and explain what you do.</p>
+    </div>
+
+    <!-- Tools Section -->
+    <div class="section">
+      <h2 class="section-title">Tools</h2>
+      <p class="section-content">Here you can list the tools and technologies you are familiar with.</p>
+    </div>
+
+    <!-- Projects Section -->
+    <div class="section">
+      <h2 class="section-title">Projects</h2>
+      <div class="project-grid">
+        <div v-for="(project, index) in projects" 
+             :key="index" 
+             class="project-card"
+             @mouseenter="project.isHovered = true"
+             @mouseleave="project.isHovered = false">
+          <div class="project-content">
+            <img :src="project.image" :alt="project.title">
+            <div class="project-overlay" :class="{ 'show': project.isHovered }">
+              <h3>{{ project.title }}</h3>
+              <p>{{ project.description }}</p>
+              <div class="tech-stack">
+                <span v-for="tech in project.technologies" 
+                      :key="tech" 
+                      class="tech-tag">
+                  {{ tech }}
+                </span>
+              </div>
+              <div class="project-links">
+                <a :href="project.liveLink" target="_blank" class="btn">View</a>
+                <a :href="project.githubLink" target="_blank" class="btn">Code</a>
+              </div>
             </div>
           </div>
         </div>
@@ -50,7 +65,7 @@ export default {
         {
           title: 'Drone WIP',
           description: 'A brief description of your first project and its key features.',
-          image: './assets/project1.jpg',
+          image: require('@/assets/$RCTWO8M.jpg'),
           liveLink: '#',
           githubLink: '#',
           technologies: ['Vue.js', 'Node.js', 'MongoDB'],
@@ -59,7 +74,7 @@ export default {
         {
           title: 'Pinza GRASS',
           description: 'Description of your second project with its main highlights.',
-          image: './assets/project2.jpg',
+          image: require('@/assets/$RCTWO8M.jpg'),
           liveLink: '#',
           githubLink: '#',
           technologies: ['React', 'Firebase', 'Redux'],
@@ -68,7 +83,7 @@ export default {
         {
           title: 'Drones FPV',
           description: 'Overview of your third project and what makes it special.',
-          image: './assets/project3.jpg',
+          image: require('@/assets/$RCTWO8M.jpg'),
           liveLink: '#',
           githubLink: '#',
           technologies: ['Angular', 'TypeScript', 'AWS'],
@@ -77,18 +92,28 @@ export default {
         {
           title: 'Darwin I',
           description: 'A brief description of your first project and its key features.',
-          image: './assets/project1.jpg',
+          image: require('@/assets/$RCTWO8M.jpg'),
           liveLink: '#',
           githubLink: '#',
           technologies: ['Vue.js', 'Node.js', 'MongoDB'],
           isHovered: false
-        }, {
+        },
+        {
           title: 'VTTC',
           description: 'A brief description of your first project and its key features.',
-          image: './assets/project1.jpg',
+          image: require('@/assets/$RCTWO8M.jpg'),
           liveLink: '#',
           githubLink: '#',
           technologies: ['Vue.js', 'Node.js', 'MongoDB'],
+          isHovered: false
+        },
+        {
+          title: 'WIP',
+          description: 'Description of your second project with its main highlights.',
+          image: require('@/assets/$RCTWO8M.jpg'),
+          liveLink: '#',
+          githubLink: '#',
+          technologies: ['React', 'Firebase', 'Redux'],
           isHovered: false
         }
       ]
@@ -110,35 +135,46 @@ export default {
 
 /* Intro Section */
 .intro {
-  padding: 1rem 0.5rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  align-items: flex-start;
+  gap: 1rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  background: url('@/assets/header.jpeg') no-repeat center center;
+  background-size: cover;
+  height: 120px;
+  position: relative;
+  z-index: 0;
 }
 
 .nothing-font {
   font-family: 'Space Mono', monospace;
-  font-size: 2.5rem;
+  font-size: 3rem;
   margin: 0;
   padding: 0;
   font-weight: 700;
   letter-spacing: -0.02em;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
-/* Contact Links */
 .contact-links {
   display: flex;
+  flex-direction: row;
   gap: 1.5rem;
+  position: relative;
+  z-index: 1;
 }
 
 .contact-item {
   color: #fff;
   text-decoration: none;
   transition: opacity 0.2s ease;
-  font-size: 0.9rem;
-  opacity: 0.7;
+  font-size: 1rem;
+  opacity: 0.8;
   font-family: 'Space Mono', monospace;
 }
 
@@ -146,11 +182,32 @@ export default {
   opacity: 1;
 }
 
+/* Section Titles */
+/* Section Titles */
+.section {
+  padding: 1.5rem 2rem; /* Reduced top padding and added left/right padding */
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.section-title {
+  font-family: 'Space Mono', monospace;
+  font-size: 2.5rem;
+  margin: 0; /* Remove margin for closer alignment */
+  padding-top: 0; /* Remove extra top padding */
+  text-align: left; /* Align the title to the left */
+  display: inline-block; /* Ensure it doesn't take up the full width */
+}
+
+.section-content {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
 /* Projects Grid */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
   padding: 3rem 1rem;
 }
 
@@ -158,19 +215,34 @@ export default {
   position: relative;
   border-radius: 8px;
   overflow: hidden;
-  aspect-ratio: 16/9;
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 16 / 9;
+  min-width: 300px;
+  max-width: 400px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-content img {
+  filter: blur(4px);
 }
 
 .project-content {
   position: relative;
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease;
 }
 
 .project-content img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: filter 0.3s ease;
 }
 
 .project-overlay {
@@ -188,19 +260,24 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
+  z-index: 1;
+  overflow: hidden;
 }
 
-.project-overlay.show {
+.project-card:hover .project-overlay {
   opacity: 1;
 }
 
+.project-overlay h3,
+.project-overlay p {
+  margin: 0.5rem 0;
+}
+
 .project-overlay h3 {
-  margin: 0 0 0.5rem 0;
   font-family: 'Space Mono', monospace;
 }
 
 .project-overlay p {
-  margin: 0 0 0.5rem 0;
   font-size: 0.9rem;
 }
 
@@ -241,11 +318,16 @@ export default {
   color: #fff;
 }
 
+/* Responsive Adjustments */
 @media (max-width: 768px) {
+  .project-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+
   .nothing-font {
     font-size: 2rem;
   }
-  
+
   .contact-links {
     flex-wrap: wrap;
     justify-content: center;
