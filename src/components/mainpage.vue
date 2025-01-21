@@ -4,10 +4,10 @@
     <div class="intro">
       <h1 class="nothing-font">boltythedoge</h1>
       <div class="contact-links">
-        <a href="mailto:your.email@example.com" class="contact-item">Email</a>
-        <a href="https://github.com/yourusername" class="contact-item">GitHub</a>
-        <a href="https://linkedin.com/in/yourusername" class="contact-item">LinkedIn</a>
-        <a href="https://twitter.com/yourusername" class="contact-item">Twitter</a>
+        <a href="mailto:boltythedoge@gmail.com" class="contact-item">Email</a>
+        <a href="https://github.com/BoltyTheDog" class="contact-item">GitHub</a>
+        <a href="https://www.linkedin.com/in/david-garcia-cirauqui-8a10542b5/" class="contact-item">LinkedIn</a>
+        <a href="https://x.com/Bolty9752485505" class="contact-item">Twitter</a>
       </div>
     </div>
 
@@ -48,7 +48,7 @@ export default {
     return {
       projects: [
         {
-          title: 'Project One',
+          title: 'Drone WIP',
           description: 'A brief description of your first project and its key features.',
           image: './assets/project1.jpg',
           liveLink: '#',
@@ -57,7 +57,7 @@ export default {
           isHovered: false
         },
         {
-          title: 'Project Two',
+          title: 'Pinza GRASS',
           description: 'Description of your second project with its main highlights.',
           image: './assets/project2.jpg',
           liveLink: '#',
@@ -66,12 +66,29 @@ export default {
           isHovered: false
         },
         {
-          title: 'Project Three',
+          title: 'Drones FPV',
           description: 'Overview of your third project and what makes it special.',
           image: './assets/project3.jpg',
           liveLink: '#',
           githubLink: '#',
           technologies: ['Angular', 'TypeScript', 'AWS'],
+          isHovered: false
+        },
+        {
+          title: 'Darwin I',
+          description: 'A brief description of your first project and its key features.',
+          image: './assets/project1.jpg',
+          liveLink: '#',
+          githubLink: '#',
+          technologies: ['Vue.js', 'Node.js', 'MongoDB'],
+          isHovered: false
+        }, {
+          title: 'VTTC',
+          description: 'A brief description of your first project and its key features.',
+          image: './assets/project1.jpg',
+          liveLink: '#',
+          githubLink: '#',
+          technologies: ['Vue.js', 'Node.js', 'MongoDB'],
           isHovered: false
         }
       ]
