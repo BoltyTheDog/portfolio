@@ -25,7 +25,7 @@
           I am a passionate aerospace engineering student at the <strong>Universitat Politècnica de Catalunya</strong>, specializing in systems engineering. With a strong foundation in <strong>CAD, electronics, and programming</strong>, I have worked on various projects, including autonomous drones, 3D printing, and robotics.
         </p>
         <p>
-          I am proficient in <strong>C++, Python, JavaScript, and MATLAB</strong>, and I have hands-on experience with tools like <strong>Fusion 360, SOLIDWORKS, and Blender</strong>. My work spans across <strong>FPV drones, 3D printing, and autonomous systems</strong>, and I am always eager to explore new challenges in technology and engineering.
+          I am seasoned in <strong>C++, C# Python, Arduino and MATLAB</strong>, knowledge about <strong>GoLang, JavaScript and C</strong>, and I have hands-on experience with tools like <strong>Fusion 360, SOLIDWORKS, and Blender</strong>. My work spans across <strong>FPV drones, 3D printing, and autonomous systems</strong>, and I am always eager to explore new challenges in technology and engineering.
         </p>
       </div>
     </div>
@@ -100,61 +100,61 @@ export default {
       projects: [
         {
           title: 'Drone WIP',
-          description: 'A brief description of your first project and its key features.',
+          description: 'Placeholder.',
           image: require('@/assets/wip.png'),
           liveLink: '#',
           githubLink: '#',
-          technologies: ['Vue.js', 'Node.js', 'MongoDB'],
+          technologies: ['X', 'X', 'X'],
           isHovered: false,
           date: '2023-01-15'
         },
         {
           title: 'Pinza GRASS',
-          description: 'Description of your second project with its main highlights.',
+          description: 'Precision linear actuator gripper for the Space Programs Rover GRASS 2024.',
           image: require('@/assets/grass.png'),
           liveLink: '#',
           githubLink: '#',
-          technologies: ['React', 'Firebase', 'Redux'],
+          technologies: ['Arduino', 'CAD', '3D Printing'],
           isHovered: false,
           date: '2023-03-22'
         },
         {
           title: 'Drones FPV',
-          description: 'Overview of your third project and what makes it special.',
+          description: 'Built, flew and perfectes different kind of FPV Drones.',
           image: require('@/assets/dronecarreras.png'),
           liveLink: '#',
           githubLink: '#',
-          technologies: ['Angular', 'TypeScript', 'AWS'],
+          technologies: ['3D Printing', 'CAD', 'Electronics'],
           isHovered: false,
           date: '2023-05-10'
         },
         {
           title: 'Darwin I',
-          description: 'A brief description of your first project and its key features.',
+          description: 'Electromechanical prosthetic hand built for under 50€.',
           image: require('@/assets/darwin1.png'),
           liveLink: 'https://drive.google.com/file/d/1Vxdkg0_rJ7waIhSqzCT6aGuWCR8Xoj6n/view',
           githubLink: '#',
-          technologies: ['Vue.js', 'Node.js', 'MongoDB'],
+          technologies: ['Arduino', 'Electronics', '3D Printing'],
           isHovered: false,
           date: '2023-07-18'
         },
         {
           title: 'VTTC',
-          description: 'A brief description of your first project and its key features.',
+          description: 'Vacuum Tube Tesla Coil build inspired by Steve Wards work.',
           image: require('@/assets/vttc.png'),
           liveLink: '#',
           githubLink: '#',
-          technologies: ['Vue.js', 'Node.js', 'MongoDB'],
+          technologies: ['CAD', 'Safety', 'Electronics', '3D Printing'],
           isHovered: false,
           date: '2023-09-25'
         },
         {
           title: 'WIP',
-          description: 'Description of your second project with its main highlights.',
+          description: 'Placeholder.',
           image: require('@/assets/wip.png'),
           liveLink: '#',
           githubLink: '#',
-          technologies: ['React', 'Firebase', 'Redux'],
+          technologies: ['X', 'X', 'X'],
           isHovered: false,
           date: '2023-11-30'
         }
@@ -498,6 +498,7 @@ export default {
 
 .project-overlay p {
   font-size: 0.9rem;
+  font-family: 'Space Mono', monospace;
 }
 
 .tech-stack {
