@@ -78,7 +78,7 @@ export default {
         {
           title: 'Drone WIP',
           description: 'A brief description of your first project and its key features.',
-          image: require('@/assets/$RCTWO8M.jpg'),
+          image: require('@/assets/project1.png'),
           liveLink: '#',
           githubLink: '#',
           technologies: ['Vue.js', 'Node.js', 'MongoDB'],
@@ -87,7 +87,7 @@ export default {
         {
           title: 'Pinza GRASS',
           description: 'Description of your second project with its main highlights.',
-          image: require('@/assets/$RCTWO8M.jpg'),
+          image: require('@/assets/project2.png'),
           liveLink: '#',
           githubLink: '#',
           technologies: ['React', 'Firebase', 'Redux'],
@@ -96,7 +96,7 @@ export default {
         {
           title: 'Drones FPV',
           description: 'Overview of your third project and what makes it special.',
-          image: require('@/assets/$RCTWO8M.jpg'),
+          image: require('@/assets/project3.png'),
           liveLink: '#',
           githubLink: '#',
           technologies: ['Angular', 'TypeScript', 'AWS'],
@@ -105,7 +105,7 @@ export default {
         {
           title: 'Darwin I',
           description: 'A brief description of your first project and its key features.',
-          image: require('@/assets/$RCTWO8M.jpg'),
+          image: require('@/assets/project4.png'),
           liveLink: '#',
           githubLink: '#',
           technologies: ['Vue.js', 'Node.js', 'MongoDB'],
@@ -114,7 +114,7 @@ export default {
         {
           title: 'VTTC',
           description: 'A brief description of your first project and its key features.',
-          image: require('@/assets/$RCTWO8M.jpg'),
+          image: require('@/assets/project5.png'),
           liveLink: '#',
           githubLink: '#',
           technologies: ['Vue.js', 'Node.js', 'MongoDB'],
@@ -123,7 +123,7 @@ export default {
         {
           title: 'WIP',
           description: 'Description of your second project with its main highlights.',
-          image: require('@/assets/$RCTWO8M.jpg'),
+          image: require('@/assets/project6.png'),
           liveLink: '#',
           githubLink: '#',
           technologies: ['React', 'Firebase', 'Redux'],
@@ -145,14 +145,53 @@ export default {
   margin: 0;
   padding: 0;
 }
-model-viewer {
-  display: block;
-  width: 100%;
-  height: 500px;
-  background: rgba(255, 255, 255, 0.1); /* To make it visible even if empty */
+
+/* Fade-in-up animation */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px); /* Start from the bottom */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* End in place */
+  }
 }
 
-/* Intro Section */
+/* Color fade-in animation */
+@keyframes fadeToYellow {
+  0% {
+    color: #fff;
+  }
+  40%{
+    color: #fff;
+  }
+  100% {
+    color: #ff0; /* Yellow color */
+  }
+}
+
+/* Ripple effect animation on the text */
+@keyframes rippleEffect {
+  0% {
+    transform: scale(0) translateX(100%);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1) translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(3) translateX(-100%);
+    opacity: 0;
+  }
+}
+
+/* Apply the animation to sections */
+.intro, .section {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
 .intro {
   padding: 2rem;
   display: flex;
@@ -167,23 +206,82 @@ model-viewer {
   z-index: 0;
 }
 
+/* Update the dot appearance animation */
+.nothing-font::after {
+  content: '.';
+  position: absolute;
+  right: -0.5rem;
+  bottom: 0.2rem;
+  font-size: 3rem;
+  color: #ff0;
+  opacity: 0;
+  animation: dotAppear 0.1s forwards;
+  animation-delay: 2s;
+  z-index: 2;
+}
+
+/* Update ripple wave effect container */
+.nothing-font::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent 0%,
+    rgba(255, 255, 0, 0.3) 50%,
+    transparent 100%
+  );
+  transform-origin: right;
+  transform: scaleX(0);
+  animation: rippleWave 0.5s cubic-bezier(0.2, 0, 0.1, 1) forwards;
+  animation-delay: 2s; /* Start exactly when dot appears */
+  z-index: 1;
+}
+
+/* Update ripple wave animation */
+@keyframes rippleWave {
+  0% {
+    transform: scaleX(0) translateX(0);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scaleX(1) translateX(-100%);
+    opacity: 0;
+  }
+}
+
+/* Update the title container to ensure proper overflow handling */
 .nothing-font {
   font-family: 'Space Mono', monospace;
   font-size: 3rem;
   margin: 0;
-  padding: 0;
+  padding: 0.5rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   position: relative;
-  z-index: 1;
-  overflow: hidden;
+  overflow: hidden; /* Contains the ripple */
   white-space: nowrap;
+  animation: fadeToYellow 2s ease-out forwards;
+  line-height: 1;
 }
 
+/* Abrupt dot appearance */
+@keyframes dotAppear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
+/* Contact Links */
 .contact-links {
   display: flex;
   flex-direction: row;
+  left: 0.8rem;
   gap: 1.5rem;
   position: relative;
   z-index: 1;
@@ -206,6 +304,7 @@ model-viewer {
 .section {
   padding: 1.5rem 2rem;
   border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  animation-delay: 0.3s; /* Delay for sections after the intro */
 }
 
 .section-title {
@@ -239,6 +338,8 @@ model-viewer {
   max-width: 400px;
   height: auto;
   transition: transform 0.3s ease;
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 0.5s; /* Delay for projects */
 }
 
 .project-card:hover .project-content img {
