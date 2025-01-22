@@ -2,7 +2,12 @@
   <div class="portfolio-container">
     <!-- Intro Section -->
     <div class="intro">
-      <h1 class="nothing-font">boltythedoge</h1>
+      <h1 class="nothing-font">
+        <span class="text-container">
+          <span class="text-visible" >boltythedoge.</span>
+          <span class="yellow-bar"></span>
+        </span>
+      </h1>
       <div class="contact-links">
         <a href="mailto:boltythedoge@gmail.com" class="contact-item">Email</a>
         <a href="https://github.com/BoltyTheDog" class="contact-item">GitHub</a>
@@ -11,56 +16,66 @@
       </div>
     </div>
 
+
     <!-- Introduction Section -->
     <div class="section">
       <h2 class="section-title">Introduction</h2>
-      <p class="section-content">This is where you can introduce yourself and explain what you do.</p>
+      <div class="section-content">
+        <p>
+          I am a passionate aerospace engineering student at the <strong>Universitat Politècnica de Catalunya</strong>, specializing in systems engineering. With a strong foundation in <strong>CAD, electronics, and programming</strong>, I have worked on various projects, including autonomous drones, 3D printing, and robotics.
+        </p>
+        <p>
+          I am proficient in <strong>C++, Python, JavaScript, and MATLAB</strong>, and I have hands-on experience with tools like <strong>Fusion 360, SOLIDWORKS, and Blender</strong>. My work spans across <strong>FPV drones, 3D printing, and autonomous systems</strong>, and I am always eager to explore new challenges in technology and engineering.
+        </p>
+      </div>
     </div>
 
     <!-- Tools Section -->
     <div class="section">
       <h2 class="section-title">Tools</h2>
-      <p class="section-content">Here you can list the tools and technologies you are familiar with.</p>
+      <p class="section-content"> 
+          Ni <strong>putisima </strong> idea.
+        </p>
     </div>
 
     <!-- Projects Section -->
     <div class="section">
-    <div class="section-header">
-      <h2 class="section-title">Projects</h2>
-      <div class="sort-buttons">
-        <button @click="sortByName">Sort by Name</button>
-        <button @click="sortByDate">Sort by Date</button>
-        <button @click="sortRandomly">Sort Randomly</button>
+      <div class="section-header">
+        <h2 class="section-title">Projects</h2>
+        <div class="sort-buttons">
+          <button @click="sortByName">Sort by Name</button>
+          <button @click="sortByDate">Sort by Date</button>
+          <button @click="sortRandomly">Sort Randomly</button>
+        </div>
       </div>
-    </div>
-    <!-- Use transition-group for smooth animations -->
-    <transition-group name="project-list" tag="div" class="project-grid">
-      <div v-for="project in projects" 
-          :key="project.title" 
-          class="project-card"
-          @mouseenter="project.isHovered = true"
-          @mouseleave="project.isHovered = false">
-        <div class="project-content">
-          <img :src="project.image" :alt="project.title">
-          <div class="project-overlay" :class="{ 'show': project.isHovered }">
-            <h3>{{ project.title }}</h3>
-            <p>{{ project.description }}</p>
-            <div class="tech-stack">
-              <span v-for="tech in project.technologies" 
-                    :key="tech" 
-                    class="tech-tag">
-                {{ tech }}
-              </span>
-            </div>
-            <div class="project-links">
-              <a :href="project.liveLink" target="_blank" class="btn">View</a>
-              <a :href="project.githubLink" target="_blank" class="btn">Code</a>
+      <!-- Use transition-group for smooth animations -->
+      <transition-group name="project-list" tag="div" class="project-grid">
+        <div v-for="project in projects" 
+            :key="project.title" 
+            class="project-card"
+            @mouseenter="project.isHovered = true"
+            @mouseleave="project.isHovered = false">
+          <div class="project-content">
+            <img :src="project.image" :alt="project.title">
+            <div class="project-overlay" :class="{ 'show': project.isHovered }">
+              <h3>{{ project.title }}</h3>
+              <p>{{ project.description }}</p>
+              <div class="tech-stack">
+                <span v-for="tech in project.technologies" 
+                      :key="tech" 
+                      class="tech-tag">
+                  {{ tech }}
+                </span>
+              </div>
+              <div class="project-links">
+                <a :href="project.liveLink" target="_blank" class="btn">View</a>
+                <a :href="project.githubLink" target="_blank" class="btn">Code</a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </transition-group>
-  </div>
+      </transition-group>
+    </div>
 
     <!-- 3D Model Viewer Section -->
     <div class="section">
@@ -86,7 +101,7 @@ export default {
         {
           title: 'Drone WIP',
           description: 'A brief description of your first project and its key features.',
-          image: require('@/assets/project1.png'),
+          image: require('@/assets/wip.png'),
           liveLink: '#',
           githubLink: '#',
           technologies: ['Vue.js', 'Node.js', 'MongoDB'],
@@ -96,7 +111,7 @@ export default {
         {
           title: 'Pinza GRASS',
           description: 'Description of your second project with its main highlights.',
-          image: require('@/assets/project2.png'),
+          image: require('@/assets/grass.png'),
           liveLink: '#',
           githubLink: '#',
           technologies: ['React', 'Firebase', 'Redux'],
@@ -106,7 +121,7 @@ export default {
         {
           title: 'Drones FPV',
           description: 'Overview of your third project and what makes it special.',
-          image: require('@/assets/project3.png'),
+          image: require('@/assets/dronecarreras.png'),
           liveLink: '#',
           githubLink: '#',
           technologies: ['Angular', 'TypeScript', 'AWS'],
@@ -116,8 +131,8 @@ export default {
         {
           title: 'Darwin I',
           description: 'A brief description of your first project and its key features.',
-          image: require('@/assets/project4.png'),
-          liveLink: '#',
+          image: require('@/assets/darwin1.png'),
+          liveLink: 'https://drive.google.com/file/d/1Vxdkg0_rJ7waIhSqzCT6aGuWCR8Xoj6n/view',
           githubLink: '#',
           technologies: ['Vue.js', 'Node.js', 'MongoDB'],
           isHovered: false,
@@ -126,7 +141,7 @@ export default {
         {
           title: 'VTTC',
           description: 'A brief description of your first project and its key features.',
-          image: require('@/assets/project5.png'),
+          image: require('@/assets/vttc.png'),
           liveLink: '#',
           githubLink: '#',
           technologies: ['Vue.js', 'Node.js', 'MongoDB'],
@@ -136,7 +151,7 @@ export default {
         {
           title: 'WIP',
           description: 'Description of your second project with its main highlights.',
-          image: require('@/assets/project6.png'),
+          image: require('@/assets/wip.png'),
           liveLink: '#',
           githubLink: '#',
           technologies: ['React', 'Firebase', 'Redux'],
@@ -144,7 +159,7 @@ export default {
           date: '2023-11-30'
         }
       ]
-    }
+    };
   },
   methods: {
     sortByName() {
@@ -155,13 +170,24 @@ export default {
     },
     sortRandomly() {
       this.projects.sort(() => Math.random() - 0.5);
-    }
+    },
   }
-}
+};
 </script>
+
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+/* Text Container */
+.text-container {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  width: 100%; /* Ensure the container takes full width */
+  height: 1.2em; /* Set a fixed height based on the font size */
+}
+
 
 /* Sorting Buttons */
 .sort-buttons {
@@ -183,58 +209,42 @@ export default {
   }
 }
 
-/* Update the dot appearance animation */
+
 .nothing-font::after {
   content: '.';
   position: absolute;
   right: -0.5rem;
-  bottom: 0.2rem;
+  bottom: 0.3rem;
   font-size: 3rem;
   color: #ff0;
   opacity: 0;
-  animation: dotAppear 0.1s forwards;
-  animation-delay: 2s;
   z-index: 2;
 }
-
-/* Update ripple wave effect container */
+/* Apply the vertical sweep animation */
 .nothing-font::before {
   content: '';
   position: absolute;
-  right: 0;
   top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, 
+  background: linear-gradient(
+    90deg,
     transparent 0%,
-    rgba(255, 255, 0, 0.3) 50%,
+    rgba(255, 255, 0, 0.8) 50%,
     transparent 100%
   );
   transform-origin: right;
   transform: scaleX(0);
-  animation: rippleWave 0.5s cubic-bezier(0.2, 0, 0.1, 1) forwards;
-  animation-delay: 2s; /* Start exactly when dot appears */
-  z-index: 1;
+  z-index: 3; /* Ensure the ripple is above the text */
 }
 
-/* Update ripple wave animation */
-@keyframes rippleWave {
-  0% {
-    transform: scaleX(0) translateX(0);
-    opacity: 0.8;
-  }
-  100% {
-    transform: scaleX(1) translateX(-100%);
-    opacity: 0;
-  }
-}
-
-/* Update the title container to ensure proper overflow handling */
+/* Ensure the text is visible */
 .nothing-font {
   font-family: 'Space Mono', monospace;
   font-size: 3rem;
   margin: 0;
-  padding: 0.5rem;
+  padding: 0.1rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   position: relative;
@@ -242,33 +252,9 @@ export default {
   white-space: nowrap;
   animation: fadeToYellow 2s ease-out forwards;
   line-height: 1;
+  z-index: 1; /* Ensure the text is above the ripple */
 }
 
-/* Abrupt dot appearance */
-@keyframes dotAppear {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-/* Ripple effect animation on the text */
-@keyframes rippleEffect {
-  0% {
-    transform: scale(0) translateX(100%);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1) translateX(0);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(3) translateX(-100%);
-    opacity: 0;
-  }
-}
 
 /* Apply the animation to sections */
 .intro, .section {
@@ -378,19 +364,6 @@ export default {
   z-index: 0;
 }
 
-.nothing-font {
-  font-family: 'Space Mono', monospace;
-  font-size: 3rem;
-  margin: 0;
-  padding: 0.5rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  position: relative;
-  overflow: hidden;
-  white-space: nowrap;
-  animation: fadeToYellow 2s ease-out forwards;
-  line-height: 1;
-}
 
 .contact-links {
   display: flex;
@@ -428,45 +401,48 @@ export default {
 }
 
 .section-content {
+  font-family: 'Space Mono', monospace;
   font-size: 1.2rem;
   line-height: 1.6;
+
 }
-
-
+/* Project Card */
 .project-card {
   position: relative;
   border-radius: 8px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  aspect-ratio: 16 / 9;
-  min-width: 300px;
-  max-width: 400px;
-  height: auto;
+  width: 100%; /* Ensure the card takes up the full width of its container */
+  max-width: 400px; /* Optional: Limit the maximum width */
+  height: 300px; /* Set a fixed height for the card */
   transition: transform 0.3s ease;
+  background: rgba(255, 255, 255, 0.01); /* Optional: Add a subtle background */
 }
-
-.project-card:hover .project-content img {
-  filter: blur(4px);
-}
-
-.project-content {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.3s ease;
-}
-
+/* Ensure the image fits within the card */
 .project-content img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 90%; /* Ensure the image doesn't exceed the card's width */
+  max-height: 90%; /* Ensure the image doesn't exceed the card's height */
+  object-fit: contain;
+  margin-top: 0.5rem;
   transition: filter 0.3s ease;
 }
 
+/* White Radial Blur Effect */
+.project-content::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 70%);
+  transform: translate(-50%, -50%);
+  z-index: -1; /* Place it behind the image */
+  filter: blur(10px); /* Add blur effect */
+}
+
+/* Project Overlay */
 .project-overlay {
   position: absolute;
   top: 0;
@@ -482,12 +458,33 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
-  z-index: 1;
+  z-index: 2; /* Ensure the overlay is above the image and blur */
   overflow: hidden;
 }
 
+/* Show overlay on hover */
 .project-card:hover .project-overlay {
   opacity: 1;
+}
+
+/* Adjust the project grid for responsiveness */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+  position: relative;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .project-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+
+  .project-card {
+    height: 250px; /* Adjust height for smaller screens */
+  }
 }
 
 .project-overlay h3,
