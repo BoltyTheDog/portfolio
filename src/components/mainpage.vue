@@ -25,46 +25,54 @@
 
     <!-- Projects Section -->
     <div class="section">
+    <div class="section-header">
       <h2 class="section-title">Projects</h2>
-      <div class="project-grid">
-        <div v-for="(project, index) in projects" 
-             :key="index" 
-             class="project-card"
-             @mouseenter="project.isHovered = true"
-             @mouseleave="project.isHovered = false">
-          <div class="project-content">
-            <img :src="project.image" :alt="project.title">
-            <div class="project-overlay" :class="{ 'show': project.isHovered }">
-              <h3>{{ project.title }}</h3>
-              <p>{{ project.description }}</p>
-              <div class="tech-stack">
-                <span v-for="tech in project.technologies" 
-                      :key="tech" 
-                      class="tech-tag">
-                  {{ tech }}
-                </span>
-              </div>
-              <div class="project-links">
-                <a :href="project.liveLink" target="_blank" class="btn">View</a>
-                <a :href="project.githubLink" target="_blank" class="btn">Code</a>
-              </div>
+      <div class="sort-buttons">
+        <button @click="sortByName">Sort by Name</button>
+        <button @click="sortByDate">Sort by Date</button>
+        <button @click="sortRandomly">Sort Randomly</button>
+      </div>
+    </div>
+    <!-- Use transition-group for smooth animations -->
+    <transition-group name="project-list" tag="div" class="project-grid">
+      <div v-for="project in projects" 
+          :key="project.title" 
+          class="project-card"
+          @mouseenter="project.isHovered = true"
+          @mouseleave="project.isHovered = false">
+        <div class="project-content">
+          <img :src="project.image" :alt="project.title">
+          <div class="project-overlay" :class="{ 'show': project.isHovered }">
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.description }}</p>
+            <div class="tech-stack">
+              <span v-for="tech in project.technologies" 
+                    :key="tech" 
+                    class="tech-tag">
+                {{ tech }}
+              </span>
+            </div>
+            <div class="project-links">
+              <a :href="project.liveLink" target="_blank" class="btn">View</a>
+              <a :href="project.githubLink" target="_blank" class="btn">Code</a>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </transition-group>
+  </div>
 
     <!-- 3D Model Viewer Section -->
     <div class="section">
       <h2 class="section-title">3D Model Viewer</h2>
-     <model-viewer 
-      src="/patitos.glb" 
-      alt="A 3D model of patitos" 
-      ar 
-      auto-rotate 
-      camera-controls 
-      style="width: 100%; height: 500px;">
-    </model-viewer>
+      <model-viewer 
+        src="/patitos.glb" 
+        alt="A 3D model of patitos" 
+        ar 
+        auto-rotate 
+        camera-controls 
+        style="width: 100%; height: 500px;">
+      </model-viewer>
     </div>
   </div>
 </template>
@@ -82,7 +90,8 @@ export default {
           liveLink: '#',
           githubLink: '#',
           technologies: ['Vue.js', 'Node.js', 'MongoDB'],
-          isHovered: false
+          isHovered: false,
+          date: '2023-01-15'
         },
         {
           title: 'Pinza GRASS',
@@ -91,7 +100,8 @@ export default {
           liveLink: '#',
           githubLink: '#',
           technologies: ['React', 'Firebase', 'Redux'],
-          isHovered: false
+          isHovered: false,
+          date: '2023-03-22'
         },
         {
           title: 'Drones FPV',
@@ -100,7 +110,8 @@ export default {
           liveLink: '#',
           githubLink: '#',
           technologies: ['Angular', 'TypeScript', 'AWS'],
-          isHovered: false
+          isHovered: false,
+          date: '2023-05-10'
         },
         {
           title: 'Darwin I',
@@ -109,7 +120,8 @@ export default {
           liveLink: '#',
           githubLink: '#',
           technologies: ['Vue.js', 'Node.js', 'MongoDB'],
-          isHovered: false
+          isHovered: false,
+          date: '2023-07-18'
         },
         {
           title: 'VTTC',
@@ -118,7 +130,8 @@ export default {
           liveLink: '#',
           githubLink: '#',
           technologies: ['Vue.js', 'Node.js', 'MongoDB'],
-          isHovered: false
+          isHovered: false,
+          date: '2023-09-25'
         },
         {
           title: 'WIP',
@@ -127,9 +140,21 @@ export default {
           liveLink: '#',
           githubLink: '#',
           technologies: ['React', 'Firebase', 'Redux'],
-          isHovered: false
+          isHovered: false,
+          date: '2023-11-30'
         }
       ]
+    }
+  },
+  methods: {
+    sortByName() {
+      this.projects.sort((a, b) => a.title.localeCompare(b.title));
+    },
+    sortByDate() {
+      this.projects.sort((a, b) => new Date(a.date) - new Date(b.date));
+    },
+    sortRandomly() {
+      this.projects.sort(() => Math.random() - 0.5);
     }
   }
 }
@@ -138,26 +163,13 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
 
-.portfolio-container {
-  background-color: #000;
-  color: #fff;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
+/* Sorting Buttons */
+.sort-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  margin-top: 0.4rem;
 }
-
-/* Fade-in-up animation */
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(50px); /* Start from the bottom */
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0); /* End in place */
-  }
-}
-
 /* Color fade-in animation */
 @keyframes fadeToYellow {
   0% {
@@ -169,41 +181,6 @@ export default {
   100% {
     color: #ff0; /* Yellow color */
   }
-}
-
-/* Ripple effect animation on the text */
-@keyframes rippleEffect {
-  0% {
-    transform: scale(0) translateX(100%);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1) translateX(0);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(3) translateX(-100%);
-    opacity: 0;
-  }
-}
-
-/* Apply the animation to sections */
-.intro, .section {
-  animation: fadeInUp 1s ease-out forwards;
-}
-
-.intro {
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1rem;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-  background: url('@/assets/header.jpeg') no-repeat center center;
-  background-size: cover;
-  height: 120px;
-  position: relative;
-  z-index: 0;
 }
 
 /* Update the dot appearance animation */
@@ -277,7 +254,144 @@ export default {
   }
 }
 
-/* Contact Links */
+/* Ripple effect animation on the text */
+@keyframes rippleEffect {
+  0% {
+    transform: scale(0) translateX(100%);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1) translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(3) translateX(-100%);
+    opacity: 0;
+  }
+}
+
+/* Apply the animation to sections */
+.intro, .section {
+  animation: fadeInUp 1s ease-out forwards;
+}
+/* Section Header */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem; /* Reduced from 1.5rem to 0.5rem */
+}
+
+/* Projects Grid */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem 1rem; /* Reduced padding-top from 3rem to 1rem */
+  position: relative;
+}
+
+/* Section Title */
+.section-title {
+  font-family: 'Space Mono', monospace;
+  font-size: 2.5rem;
+  margin: 0;
+  text-align: left;
+}
+/* Sorting Buttons */
+.sort-buttons {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.sort-buttons button {
+  background: #333;
+  color: #fff;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.9rem;
+  transition: background 0.2s ease;
+}
+
+.sort-buttons button:hover {
+  background: #555;
+}
+
+/* Project List Animations */
+.project-list-move {
+  transition: transform 0.5s ease;
+}
+
+.project-list-enter-active,
+.project-list-leave-active {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.project-list-enter-from,
+.project-list-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.project-list-leave-active {
+  position: absolute;
+}
+
+/* Rest of the CSS */
+.portfolio-container {
+  background-color: #000;
+  color: #fff;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.intro, .section {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.intro {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  background: url('@/assets/header.jpeg') no-repeat center center;
+  background-size: cover;
+  height: 120px;
+  position: relative;
+  z-index: 0;
+}
+
+.nothing-font {
+  font-family: 'Space Mono', monospace;
+  font-size: 3rem;
+  margin: 0;
+  padding: 0.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: fadeToYellow 2s ease-out forwards;
+  line-height: 1;
+}
+
 .contact-links {
   display: flex;
   flex-direction: row;
@@ -300,11 +414,10 @@ export default {
   opacity: 1;
 }
 
-/* Section Titles */
 .section {
   padding: 1.5rem 2rem;
   border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-  animation-delay: 0.3s; /* Delay for sections after the intro */
+  animation-delay: 0.3s;
 }
 
 .section-title {
@@ -319,13 +432,6 @@ export default {
   line-height: 1.6;
 }
 
-/* Projects Grid */
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
-  padding: 3rem 1rem;
-}
 
 .project-card {
   position: relative;
@@ -338,8 +444,6 @@ export default {
   max-width: 400px;
   height: auto;
   transition: transform 0.3s ease;
-  animation: fadeInUp 1s ease-out forwards;
-  animation-delay: 0.5s; /* Delay for projects */
 }
 
 .project-card:hover .project-content img {
@@ -436,7 +540,6 @@ export default {
   color: #fff;
 }
 
-/* Responsive Adjustments */
 @media (max-width: 768px) {
   .project-grid {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
