@@ -53,6 +53,19 @@
         </div>
       </div>
     </div>
+
+    <!-- 3D Model Viewer Section -->
+    <div class="section">
+      <h2 class="section-title">3D Model Viewer</h2>
+     <model-viewer 
+      src="/patitos.glb" 
+      alt="A 3D model of patitos" 
+      ar 
+      auto-rotate 
+      camera-controls 
+      style="width: 100%; height: 500px;">
+    </model-viewer>
+    </div>
   </div>
 </template>
 
@@ -132,6 +145,12 @@ export default {
   margin: 0;
   padding: 0;
 }
+model-viewer {
+  display: block;
+  width: 100%;
+  height: 500px;
+  background: rgba(255, 255, 255, 0.1); /* To make it visible even if empty */
+}
 
 /* Intro Section */
 .intro {
@@ -161,6 +180,7 @@ export default {
   white-space: nowrap;
 }
 
+
 .contact-links {
   display: flex;
   flex-direction: row;
@@ -183,19 +203,16 @@ export default {
 }
 
 /* Section Titles */
-/* Section Titles */
 .section {
-  padding: 1.5rem 2rem; /* Reduced top padding and added left/right padding */
+  padding: 1.5rem 2rem;
   border-bottom: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 .section-title {
   font-family: 'Space Mono', monospace;
   font-size: 2.5rem;
-  margin: 0; /* Remove margin for closer alignment */
-  padding-top: 0; /* Remove extra top padding */
-  text-align: left; /* Align the title to the left */
-  display: inline-block; /* Ensure it doesn't take up the full width */
+  margin: 0;
+  text-align: left;
 }
 
 .section-content {
