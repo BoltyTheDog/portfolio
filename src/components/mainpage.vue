@@ -4,8 +4,7 @@
     <div class="intro">
       <h1 class="nothing-font">
         <span class="text-container">
-          <span class="text-visible" >boltythedoge.</span>
-          <span class="yellow-bar"></span>
+          <span class="text-visible" id="animated-title"></span>
         </span>
       </h1>
       <div class="contact-links">
@@ -81,7 +80,7 @@
     <div class="section">
       <h2 class="section-title">3D Model Viewer</h2>
       <model-viewer 
-        src="/patitos.glb" 
+        src="/kawasaki.glb" 
         alt="A 3D model of patitos" 
         ar 
         auto-rotate 
@@ -99,14 +98,14 @@ export default {
     return {
       projects: [
         {
-          title: 'Drone WIP',
-          description: 'Placeholder.',
-          image: require('@/assets/wip.png'),
+          title: 'Drones FPV',
+          description: 'Built, flew and perfectes different kind of FPV Drones.',
+          image: require('@/assets/dronecarreras.png'),
           liveLink: '#',
           githubLink: '#',
-          technologies: ['X', 'X', 'X'],
+          technologies: ['3D Printing', 'CAD', 'Electronics'],
           isHovered: false,
-          date: '2023-01-15'
+          date: '2025-01-10'
         },
         {
           title: 'Pinza GRASS',
@@ -116,18 +115,9 @@ export default {
           githubLink: '#',
           technologies: ['Arduino', 'CAD', '3D Printing'],
           isHovered: false,
-          date: '2023-03-22'
+          date: '2024-06-22'
         },
-        {
-          title: 'Drones FPV',
-          description: 'Built, flew and perfectes different kind of FPV Drones.',
-          image: require('@/assets/dronecarreras.png'),
-          liveLink: '#',
-          githubLink: '#',
-          technologies: ['3D Printing', 'CAD', 'Electronics'],
-          isHovered: false,
-          date: '2023-05-10'
-        },
+       
         {
           title: 'Darwin I',
           description: 'Electromechanical prosthetic hand built for under 50€.',
@@ -136,7 +126,7 @@ export default {
           githubLink: '#',
           technologies: ['Arduino', 'Electronics', '3D Printing'],
           isHovered: false,
-          date: '2023-07-18'
+          date: '2023-01-18'
         },
         {
           title: 'VTTC',
@@ -146,8 +136,18 @@ export default {
           githubLink: '#',
           technologies: ['CAD', 'Safety', 'Electronics', '3D Printing'],
           isHovered: false,
-          date: '2023-09-25'
+          date: '2021-09-25'
         },
+        {
+          title: 'Drone WIP',
+          description: 'Placeholder.',
+          image: require('@/assets/wip.png'),
+          liveLink: '#',
+          githubLink: '#',
+          technologies: ['X', 'X', 'X'],
+          isHovered: false,
+          date: '2021-01-15'
+        }, 
         {
           title: 'WIP',
           description: 'Placeholder.',
@@ -156,7 +156,7 @@ export default {
           githubLink: '#',
           technologies: ['X', 'X', 'X'],
           isHovered: false,
-          date: '2023-11-30'
+          date: '2020-11-30'
         }
       ]
     };
@@ -166,12 +166,53 @@ export default {
       this.projects.sort((a, b) => a.title.localeCompare(b.title));
     },
     sortByDate() {
-      this.projects.sort((a, b) => new Date(a.date) - new Date(b.date));
+      this.projects.sort((a, b) => new Date(b.date) - new Date(a.date));
     },
     sortRandomly() {
       this.projects.sort(() => Math.random() - 0.5);
     },
-  }
+    getRandomDelay() {
+      return Math.floor(Math.random() * 250) + 50; // Random delay between 50ms and 200ms
+    },
+    animateTitle() {
+      const titleElement = document.getElementById('animated-title');
+      const texts = ["boltythedoge.", "David G.C."];
+      let index = 0;
+
+      const typeAndUntype = () => {
+        const currentText = texts[index];
+        let i = 0;
+
+        const type = () => {
+          if (i < currentText.length) {
+            titleElement.textContent = currentText.substring(0, i + 1);
+            i++;
+            setTimeout(type, this.getRandomDelay()); // Random delay for typing
+          } else {
+            setTimeout(untype, 2000); // Wait 2 seconds before untyping
+          }
+        };
+
+        const untype = () => {
+          if (i > 0) {
+            titleElement.textContent = currentText.substring(0, i - 1);
+            i--;
+            setTimeout(untype, 30); // Fixed delay for untyping
+          } else {
+            index = (index + 1) % texts.length;
+            setTimeout(typeAndUntype, 100); // Wait 1 second before starting next cycle
+          }
+        };
+
+        type();
+      };
+
+      typeAndUntype();
+    }
+  },
+  mounted() {
+    this.animateTitle();
+  },
 };
 </script>
 
@@ -179,15 +220,32 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
 
-/* Text Container */
 .text-container {
   position: relative;
   display: inline-block;
   overflow: hidden;
   width: 100%; /* Ensure the container takes full width */
-  height: 1.2em; /* Set a fixed height based on the font size */
+  height: 100%; /* Remove fixed height to prevent cutting */
 }
 
+
+/* Typing and Untyping Animation */
+@keyframes typing {
+  from { width: 100%; }
+  to { width: 100%; }
+}
+
+@keyframes untyping {
+  from { width: 100%; }
+  to { width: 100%; }
+}
+
+.text-visible {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 2s steps(40, end), untyping 2s steps(40, end) 4s;
+}
 
 /* Sorting Buttons */
 .sort-buttons {
@@ -239,7 +297,6 @@ export default {
   z-index: 3; /* Ensure the ripple is above the text */
 }
 
-/* Ensure the text is visible */
 .nothing-font {
   font-family: 'Space Mono', monospace;
   font-size: 3rem;
@@ -251,10 +308,8 @@ export default {
   overflow: hidden; /* Contains the ripple */
   white-space: nowrap;
   animation: fadeToYellow 2s ease-out forwards;
-  line-height: 1;
   z-index: 1; /* Ensure the text is above the ripple */
 }
-
 
 /* Apply the animation to sections */
 .intro, .section {
