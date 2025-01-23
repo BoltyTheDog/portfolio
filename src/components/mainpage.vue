@@ -309,6 +309,7 @@ export default {
   white-space: nowrap;
   animation: fadeToYellow 2s ease-out forwards;
   z-index: 1; /* Ensure the text is above the ripple */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add drop shadow */
 }
 
 /* Apply the animation to sections */
@@ -531,17 +532,6 @@ export default {
   position: relative;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .project-grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  }
-
-  .project-card {
-    height: 250px; /* Adjust height for smaller screens */
-  }
-}
-
 .project-overlay h3,
 .project-overlay p {
   margin: 0.5rem 0;
@@ -593,18 +583,70 @@ export default {
   color: #fff;
 }
 
+
 @media (max-width: 768px) {
+  .project-card {
+    height: 250px;
+    max-width: 100%;
+  }
+  .intro {
+    height: auto;
+    padding: 1rem;
+    text-align: center;
+    background-size: cover;
+  }
   .project-grid {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   }
 
+  .project-content img {
+    max-width: 100%;
+    max-height: 250px;
+    margin: 0 auto;
+  }
+
+
   .nothing-font {
     font-size: 2rem;
   }
-
   .contact-links {
     flex-wrap: wrap;
     justify-content: center;
   }
+  .project-overlay {
+    padding: 0.5rem;
+  }
+  .section {
+    padding: 1rem;
+  }
+
+  .sort-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    text-align: center;
+  }
 }
+@media (max-width: 576px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card {
+    margin: 0 auto;
+  }
+  .section-content {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .tech-tag {
+    font-size: 0.8rem;
+  }
+}
+
 </style>
