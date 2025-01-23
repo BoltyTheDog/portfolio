@@ -113,7 +113,7 @@ export default {
           image: require('@/assets/terrorsim.png'),
           liveLink: '#',
           githubLink: 'https://github.com/Info1-DanielBryanArnauDavid/ArcGIS_TerrorSim/tree/Final',
-          technologies: ['C\#', 'GitHub', 'Grit'],
+          technologies: ['C#', 'GitHub', 'Grit'],
           isHovered: false,
           date: '2024-12-30'
         },
