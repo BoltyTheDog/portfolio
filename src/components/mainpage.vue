@@ -108,6 +108,16 @@ export default {
           date: '2025-01-10'
         },
         {
+          title: 'ArcGIS_TerrorSim',
+          description: 'Collision Simulator that uses ArcGIS SDK for my final project in INFOII.',
+          image: require('@/assets/terrorsim.png'),
+          liveLink: '#',
+          githubLink: 'https://github.com/Info1-DanielBryanArnauDavid/ArcGIS_TerrorSim/tree/Final',
+          technologies: ['C\#', 'GitHub', 'Grit'],
+          isHovered: false,
+          date: '2024-12-30'
+        },
+        {
           title: 'Pinza GRASS',
           description: 'Precision linear actuator gripper for the Space Programs Rover GRASS 2024.',
           image: require('@/assets/grass.png'),
