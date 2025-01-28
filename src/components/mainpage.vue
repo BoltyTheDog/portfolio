@@ -97,11 +97,11 @@ export default {
   data() {
     return {
       projects: [
-        {
+            {
           title: 'Drones FPV',
-          description: 'Built, flew and perfectes different kind of FPV Drones.',
+          description: 'Built, flew and perfected different kinds of FPV Drones.',
           image: require('@/assets/dronecarreras.png'),
-          liveLink: '#',
+          liveLink: 'https://boltythedoge.space/projects/drones-fpv', // Updated liveLink
           githubLink: '#',
           technologies: ['3D Printing', 'CAD', 'Electronics'],
           isHovered: false,
@@ -111,7 +111,7 @@ export default {
           title: 'ArcGIS_TerrorSim',
           description: 'Collision Simulator that uses ArcGIS SDK for my final project in INFOII.',
           image: require('@/assets/terrorsim.png'),
-          liveLink: '#',
+          liveLink: 'https://boltythedoge.space/projects/arcgis-terrorsim', // Updated liveLink
           githubLink: 'https://github.com/Info1-DanielBryanArnauDavid/ArcGIS_TerrorSim/tree/Final',
           technologies: ['C#', 'GitHub', 'Grit'],
           isHovered: false,
