@@ -1,23 +1,22 @@
 <template>
-  <mainpage msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <!-- Removed the header and nav section -->
+    <!-- This is where the routed components will be displayed -->
+    <router-view />
+  </div>
 </template>
 
 <script>
-import mainpage from './components/mainpage.vue'
-
 export default {
   name: 'App',
-  components: {
-    mainpage
-  }
-}
+};
 </script>
 
 <style>
 html, body {
-  margin: 0; /* Remove all margins */
-  padding: 0; /* Remove all paddings */
-  height: 100%; /* Ensure the height covers the viewport */
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
 #app {
@@ -29,8 +28,27 @@ html, body {
 }
 
 body {
-  background: #000; /* Set the background color */
-  overflow-x: hidden; /* Prevent horizontal scrolling */
+  background: #000;
+  overflow-x: hidden;
 }
 
+
+
+header {
+  background-color: #222;
+  padding: 1rem;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+nav a.router-link-active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* Optional: You can leave the rest of the styles, or remove any specific styles if not needed */
 </style>

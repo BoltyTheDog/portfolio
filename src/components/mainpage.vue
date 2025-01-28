@@ -67,7 +67,7 @@
                 </span>
               </div>
               <div class="project-links">
-                <a :href="project.liveLink" target="_blank" class="btn">View</a>
+                <router-link :href="project.liveLink" target="_blank" class="btn">View</router-link>
                 <a :href="project.githubLink" target="_blank" class="btn">Code</a>
               </div>
             </div>
@@ -97,11 +97,11 @@ export default {
   data() {
     return {
       projects: [
-            {
+        {
           title: 'Drones FPV',
           description: 'Built, flew and perfected different kinds of FPV Drones.',
           image: require('@/assets/dronecarreras.png'),
-          liveLink: 'https://boltythedoge.space/projects/drones-fpv', // Updated liveLink
+          liveLink: '/projects/drones-fpv', // Vue Router dynamic route
           githubLink: '#',
           technologies: ['3D Printing', 'CAD', 'Electronics'],
           isHovered: false,
@@ -111,7 +111,7 @@ export default {
           title: 'ArcGIS_TerrorSim',
           description: 'Collision Simulator that uses ArcGIS SDK for my final project in INFOII.',
           image: require('@/assets/terrorsim.png'),
-          liveLink: 'https://boltythedoge.space/projects/arcgis-terrorsim', // Updated liveLink
+          liveLink: '/projects/arcgis-terrorsim', // Updated liveLink
           githubLink: 'https://github.com/Info1-DanielBryanArnauDavid/ArcGIS_TerrorSim/tree/Final',
           technologies: ['C#', 'GitHub', 'Grit'],
           isHovered: false,
@@ -121,7 +121,7 @@ export default {
           title: 'Pinza GRASS',
           description: 'Precision linear actuator gripper for the Space Programs Rover GRASS 2024.',
           image: require('@/assets/grass.png'),
-          liveLink: '#',
+          liveLink: '/projects/pinza-grass',
           githubLink: '#',
           technologies: ['Arduino', 'CAD', '3D Printing'],
           isHovered: false,
@@ -132,8 +132,8 @@ export default {
           title: 'Darwin I',
           description: 'Electromechanical prosthetic hand built for under 50€.',
           image: require('@/assets/darwin1.png'),
-          liveLink: 'https://drive.google.com/file/d/1Vxdkg0_rJ7waIhSqzCT6aGuWCR8Xoj6n/view',
-          githubLink: '#',
+          liveLink: '/projects/darwin-i',
+          githubLink: 'https://drive.google.com/file/d/1Vxdkg0_rJ7waIhSqzCT6aGuWCR8Xoj6n/view',
           technologies: ['Arduino', 'Electronics', '3D Printing'],
           isHovered: false,
           date: '2023-01-18'
@@ -142,7 +142,7 @@ export default {
           title: 'VTTC',
           description: 'Vacuum Tube Tesla Coil build inspired by Steve Wards work.',
           image: require('@/assets/vttc.png'),
-          liveLink: '#',
+          liveLink: 'projects/vttc',
           githubLink: '#',
           technologies: ['CAD', 'Safety', 'Electronics', '3D Printing'],
           isHovered: false,
