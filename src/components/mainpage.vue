@@ -1,5 +1,6 @@
 <template>
   <div class="portfolio-container">
+    <div class="gradient-background"></div>
     <!-- Intro Section -->
     <div class="intro">
       <h1 class="nothing-font">
@@ -32,9 +33,14 @@
     <!-- Tools Section -->
     <div class="section">
       <h2 class="section-title">Tools</h2>
-      <p class="section-content"> 
-          Ni <strong>putisima </strong> idea.
+      <div class="section-content"> 
+        <p>
+          <strong>Software:</strong> Blender, GIMP, Fusion 360, MATLAB, SOLIDWORKS, BetaFlight, PusaSlicer, Lightroom, FileZilla, EasyEDA, DaVinci Resolve, Arduino IDE, Reality Capure
         </p>
+        <p>
+          <strong>Hardware:</strong> SOVOL SV01 FDM, Anycubic Photon Mono 4, laser engraver, etc..
+        </p>
+      </div>
     </div>
 
     <!-- Projects Section -->
@@ -392,15 +398,33 @@ export default {
   position: absolute;
 }
 
-/* Rest of the CSS */
+/* Add this at the top of your style section, after the imports */
 .portfolio-container {
-  background-color: #000;
-  color: #fff;
+  position: relative;
+  color: white;
+  background-color: transparent; /* Remove the black background */
   min-height: 100vh;
   margin: 0;
   padding: 0;
 }
 
+/* Add this new gradient background div */
+.gradient-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    #000000,
+    #1a1a1a 25%,
+    #333333 50%,
+    #1a1a1a 75%,
+    #000000
+  );
+  z-index: -1;
+}
 @keyframes fadeInUp {
   0% {
     opacity: 0;
@@ -470,6 +494,7 @@ export default {
   font-family: 'Space Mono', monospace;
   font-size: 1.2rem;
   line-height: 1.6;
+  text-align: left;
 
 }
 /* Project Card */
